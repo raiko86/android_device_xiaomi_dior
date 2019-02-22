@@ -1,11 +1,13 @@
 [
-  {
+  { "remote": "github",
     "repository": "raiko86/android_vendor_xiaomi_dior",
-    "target_path": "vendor/xiaomi/dior"
+    "target_path": "vendor/xiaomi/dior",
+    "revision": "cm-14.1"
   },
-  {
+  { "remote": "github",
     "repository": "raiko86/android_kernel_xiaomi_dior",
-    "target_path": "kernel/xiaomi/dior"
+    "target_path": "kernel/xiaomi/dior",
+    "revision": "cm-14.1"
   },
   {
     "repository": "android_device_qcom_common",
