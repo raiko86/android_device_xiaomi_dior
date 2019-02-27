@@ -425,7 +425,7 @@ on charger
 
 on property:sys.boot_completed=1
     # Temp hack to fix torch and camera not being registered on boot
-    # echo $(ps | grep camera) | cut -d' ' -f2 | xargs kill | restart media
+    echo $(ps | grep camera) | cut -d' ' -f2 | xargs kill | restart media
 
     # Enable Power modes and set the IO scheduler
     write /sys/module/lpm_levels/enable_low_power/l2 4
