@@ -337,10 +337,17 @@ on property:ro.boot.modem=LTETD
 on property:ro.boot.modem=LTEW
     setprop persist.radio.rat_on combine
 
+# Start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
+
+on property:init.svc.media=restarting
+    restart qcamerasvr
+
+on property:init.svc.servicemanager=restarting
+    restart qcamerasvr
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -417,8 +424,6 @@ on charger
     write /sys/devices/system/cpu/cpu3/online 0
 
 on property:sys.boot_completed=1
-    # Temp hack to fix torch not being registered on boot
-    restart media
 
     # Enable Power modes and set the IO scheduler
     write /sys/module/lpm_levels/enable_low_power/l2 4
