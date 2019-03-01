@@ -421,9 +421,6 @@ on charger
     write /sys/devices/system/cpu/cpu3/online 0
 
 on property:sys.boot_completed=1
-    # Temp hack to fix torch and camera not being registered on boot
-    # restart qcamerasvr | restart media
-
     # Enable Power modes and set the IO scheduler
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
@@ -446,3 +443,6 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
     rm /data/system/default_values
     start mpdecision
+
+    # Temp hack to fix torch and camera not being registered on boot
+    restart qcamerasvr | restart media
