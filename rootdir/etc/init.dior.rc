@@ -344,7 +344,8 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     group camera system inet input graphics
 
 on property:sys.shutdown.requested=*
-    stop qcamerasvr | stop media 
+    stop qcamerasvr
+    stop media
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -443,4 +444,4 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
     rm /data/system/default_values
     start mpdecision
-    restart qcamerasvr | restart media
+    restart media
